@@ -120,7 +120,13 @@ const exp = {
         } else {
             throw new Error('Cannot sync() when NODE_ENV is set to \'production\'.');
         }
-    }
+    },
+    ID: ID_TYPE,
+    generateId: generateId,
 }
 
-exp.defineModel
+for (let type of TYPES) {
+    exp[type] = Sequelize[type];
+}
+
+module.exports = exp;
